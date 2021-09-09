@@ -70,10 +70,10 @@ square.forEach(function(square) {
 
 
 let ticker = PIXI.Ticker.shared;
-
+let text;
 const WIDTH = 1000;
 const HEIGHT = 560;
-
+ 
 const app = new PIXI.Application({ 
     width: WIDTH,
     height: HEIGHT,
@@ -89,16 +89,54 @@ mountains.position.x = 0 ;
 mountains.position.y = 0;
 app.stage.addChild(mountains);
 
-// paralax background 
+
+text = new PIXI.Text("Jump the Dragon");
+text.x = app.view.width/2;
+text.y = app.view.height/2;
+text.anchor.set(0.5);
+text.style = new PIXI.TextStyle({
+  fill: 0x000000,
+  fontSize: 100,
+  fontFamily: "Arcade"
+})
+
+app.stage.addChild(text)
+
+const startGame = () => {
+  app.stage.removeChild(text);
+  speed = 6;
+}
+
+app.view.addEventListener('click', startGame);
+
+
 /*
+// paralax background 
+let bgBack
+let bgMid 
+let bgSpeed = 1;
+let bgX = 0;
+
 app.loader.baseUrl="images/layers";
 app.loader
-.add("bgBack"parallax-mountain-mountains.png
-  parallax-mountain-foreground-trees.png
+.add("bgBack", "parallax-mountain-mountains.png")
+.add("bgMid", "parallax-mountain-foreground-trees.png")
+app.loader.onComplete.add(initLevel);
+app.loader.load()
 
-) /*
+function createBg (texture){
+  let tiling = new PIXI.TilingSprite(texture, WIDTH, HEIGHT);
+  tiling.position.set(0,400);
+  app.stage.addChild(tiling);
+  return tiling;
+}
 
+function initLevel(){
+  bgBack = createBg(app.loader.resources["bgBack"].texture);
+}
 
+*/
+ 
 // monster sprite
 const sprite = PIXI.Sprite.from('images/dragon.png');
 const spriteReverse = PIXI.Sprite.from('images/dragon.png');
@@ -125,7 +163,7 @@ app.stage.addChild(spriteReverse);
 
 let x = 0;
 
-let speed = 6 ;
+let speed = 0 ;
 
 // Euqlidian modulo
 const modAbs = (value, modulo) => (value % modulo + modulo) % modulo;
@@ -133,7 +171,7 @@ const modAbs = (value, modulo) => (value % modulo + modulo) % modulo;
 
 app.ticker.add(function(delta) {
   speed = speed * 1.001;
-  power = power * 0.9996;
+  power = power * 0.9997;
 });
 
 // Listen for animate update
@@ -167,8 +205,8 @@ app.ticker.add((delta) => {
 
 let player1 = PIXI.Sprite.from("images/Player1.png");
 
-player1.width = 120; // sets sprite character image size
-player1.height = 120;
+player1.width = 100; // sets sprite character image size
+player1.height = 100;
 
 //positioning of player1 sprite
 player1.anchor.set(0.9 ); //sets where in sprite anchor point is
@@ -213,7 +251,8 @@ const jump = () => {
   ticker.add(tick);
 }
 
-app.view.addEventListener('click', jump);
+document.addEventListener('keydown', jump);
+
 app.view.addEventListener('touchend', jump);
 
 
@@ -227,6 +266,7 @@ function colision (a,b){
           aBox.y < bBox.y + bBox.height ;
         
 }
+
 
 
 // paralax scrolling bakcgorund

@@ -1,0 +1,13 @@
+
+
+@font-face{
+  font-family: "Arcade";
+  src: url('font/ARCADE.TTF');
+}
+
+
+#fontActive{
+  font-family: "Arcade";
+  font-size: 10px;
+  color: black;
+}
