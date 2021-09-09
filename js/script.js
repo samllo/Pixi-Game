@@ -81,6 +81,25 @@ const app = new PIXI.Application({
 });
 document.body.appendChild(app.view);
 
+/// background mountain image sprite
+var mountains = PIXI.Sprite.from('images/layers/parallax-mountain-bg.png');
+mountains.width = WIDTH ;
+mountains.height = HEIGHT;
+mountains.position.x = 0 ;
+mountains.position.y = 0;
+app.stage.addChild(mountains);
+
+// paralax background 
+/*
+app.loader.baseUrl="images/layers";
+app.loader
+.add("bgBack"parallax-mountain-mountains.png
+  parallax-mountain-foreground-trees.png
+
+) /*
+
+
+// monster sprite
 const sprite = PIXI.Sprite.from('images/dragon.png');
 const spriteReverse = PIXI.Sprite.from('images/dragon.png');
 
@@ -114,7 +133,7 @@ const modAbs = (value, modulo) => (value % modulo + modulo) % modulo;
 
 app.ticker.add(function(delta) {
   speed = speed * 1.001;
-  power = power * 0.9999;
+  power = power * 0.9996;
 });
 
 // Listen for animate update
@@ -208,3 +227,7 @@ function colision (a,b){
           aBox.y < bBox.y + bBox.height ;
         
 }
+
+
+// paralax scrolling bakcgorund
+
