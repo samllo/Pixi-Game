@@ -72,8 +72,8 @@ square.forEach(function(square) {
 let ticker = PIXI.Ticker.shared;
 let text;
 let stop;
-const WIDTH = 1000;
-const HEIGHT = 560;
+const WIDTH = 900;
+const HEIGHT = 520;
  
 const app = new PIXI.Application({ 
     width: WIDTH,

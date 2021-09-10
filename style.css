@@ -6,21 +6,91 @@
 }
 
 
-#fontActive{
+@font-face{
+  font-family: "Fighter";
+  src: url('font/Act_Of_Rejection.ttf');
+}
+
+
+@font-face{
+  font-family: "Pixel";
+  src: url('font/PressStart2P-Regular.ttf');
+}
+
+/* hidden font required to load pixi fonts */
+#fontActive{ 
   font-family: "Arcade";
   font-size: 0px;
 }
 
+body{
+  font-family: "Pixel";
+  font-size:0.7rem;
+  overflow: hidden;
+}
+
+h2{
+  text-align: center;
+  font-size: 2.3rem;
+  font-family: "Fighter";
+}
+
+li{ 
+  margin-bottom: 10px;  
+}
+
+
 #container {
+  
   display: flex;
   flex-direction: row;
 }
 
 #leftSide{
-  colour:blue;
+  color:black;
+  width: 15%;
+  padding:1rem;
+  height: 520px;
+  position: relative;
+}
+
+#rules{
+  align-self:center;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+
+#screen{
+
 }
 
 #rightSide{
-  
+  width: 15%;
+  height: 520px;
 }
 
+#links{
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.linkTiles{
+  padding:2rem;
+  margin-top:auto;
+  text-align: center;
+  font-size:0.7rem;
+}
+
+i{
+  font-size:1.5rem
+}
+
+#time{
+  font-family: "Arcade";
+  font-size: 5rem;
+  text-align: center;
+}
