@@ -46,7 +46,6 @@ li{
 
 
 #container {
-  margin;
   width:100vw;
   display: flex;
   flex-direction: row;
@@ -69,10 +68,6 @@ li{
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-
-}
-
-#screen{
 
 }
 
@@ -118,5 +113,5 @@ i:hover{
   font-family: "Arcade";
   font-size: 5rem;
   text-align: center;
-  width;100vw;
+  width:100vw;
 }

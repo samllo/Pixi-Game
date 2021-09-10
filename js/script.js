@@ -1,74 +1,5 @@
 
 
-
-
-/*
-
-
-let app = new PIXI.Application({ width: 840, height: 560 });
-document.body.appendChild(app.view);
-
-let player1 = PIXI.Sprite.from("images/Player1.png");
-
-player1.width = 120; // sets sprite character image size
-player1.height = 120;
-
-//positioning of player1 sprite
-player1.anchor.set(0.5); //sets where in sprite anchor point is
-player1.x = app.view.width /2; // centers sprite in VP 
-player1.y = app.view.height /2;
-
-
-app.stage.addChild(player1);
-
-
-//
-
-var square = new PIXI.Graphics();
-square.beginFill(0xff0000);
-square.drawRect(0, 0, 50, 50);
-square.endFill();
-square.x = 100;
-square.y = 100;
-app.stage.addChild(square);
-
-requestAnimationFrame(update);
-
-
-function update() {
-  square.position.x += 1;
-
-  app.render(app.stage);
-  
-  requestAnimationFrame(update);
-}
-
- 
-///
-square.forEach(function(square) {
-
-  //Move the square
-  square.y += square.vy;
-
-  //Check the square's screen boundaries
-  let squareHitsWall = contain(square, {x: 28, y: 10, width: 488, height: 480});
-
-  //If the square hits the top or bottom of the stage, reverse
-  //its direction
-  if (squareHitsWall === "top" || squareHitsWall === "bottom") {
-    square.vy *= -1;
-  }
-
-  //Test for a collision. If any of the enemies are touching
-  //the explorer, set `explorerHit` to `true`
-  if(hitTestRectangle(explorer, square)) {
-    explorerHit = true;
-  }
-});
-
-*/
-
-
 let ticker = PIXI.Ticker.shared;
 let text;
 let stop;
@@ -122,40 +53,9 @@ text2.style = new PIXI.TextStyle({
   fontFamily: "Arcade"
 })
 
-
-
-/*
-// paralax background 
-let bgBack
-let bgMid 
-let bgSpeed = 1;
-let bgX = 0;
-
-app.loader.baseUrl="images/layers";
-app.loader
-.add("bgBack", "parallax-mountain-mountains.png")
-.add("bgMid", "parallax-mountain-foreground-trees.png")
-app.loader.onComplete.add(initLevel);
-app.loader.load()
-
-function createBg (texture){
-  let tiling = new PIXI.TilingSprite(texture, WIDTH, HEIGHT);
-  tiling.position.set(0,400);
-  app.stage.addChild(tiling);
-  return tiling;
-}
-
-function initLevel(){
-  bgBack = createBg(app.loader.resources["bgBack"].texture);
-}
-
-*/
- 
 // monster sprite
 const sprite = PIXI.Sprite.from('images/dragon.png');
 const spriteReverse = PIXI.Sprite.from('images/dragon.png');
-
-
 
 sprite.width = 150;
 sprite.height = 150;
@@ -219,7 +119,7 @@ app.ticker.add((delta) => {
 });
 
 
-////
+//player 1 sprite
 
 let player1 = PIXI.Sprite.from("images/Player1.png");
 
@@ -231,12 +131,9 @@ player1.anchor.set(0.9 ); //sets where in sprite anchor point is
 player1.x = app.view.width /3.5; // centers sprite in VP 
 player1.y = app.view.height /1;
 
-
 app.stage.addChild(player1);
 
-
-
-//Set Animation
+//Set jumping Animation
 let jumping = false;
 
 let power = 20 ;
@@ -270,7 +167,6 @@ const jump = () => {
 }
 
 document.addEventListener('keydown', jump);
-
 app.view.addEventListener('touchend', jump);
 
 
@@ -287,10 +183,7 @@ function colision (a,b){
         
 }
 
-
-
 // count up timer
-
 
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
