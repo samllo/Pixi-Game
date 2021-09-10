@@ -7,11 +7,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
   <title>Basic game built with Pixi.js</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/8ae4b7406a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div id="fontActive">hidden</div>
+<div id="fontActive">hidden</div>
 
+<div id="container">
+
+  <div id="leftSide">
+    <h2>Rules</h2>
+    <ol>
+      <li>Jump the Dragon by hitting any key</li>
+      <li>As time goes on your jump will decrease and the Dragons will speed up</li>
+      <li>If you hit the Dragon your time will stop</li>
+      <li>When you're ready click anywhere on the game screen to begin</li>
+    </ol>
+  </div>
+
+  <div id="screen"></div>
+ 
+  <div id="rightSide"> 
+    <div class="linkTiles">
+      <i class="fas fa-user"></i>
+      <p>Portfolio</p>
+    </div>
+
+    <div class="linkTiles">
+      <i class="fas fa-file-code"></i>
+      <p>Portfolio</p>
+    </div>
+  </div>
+
+</div>
+
+  <label id="minutes">00</label>:<label id="seconds">00</label>
   <script src="js/script.js"></script>
 </body>
 

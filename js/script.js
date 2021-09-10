@@ -71,6 +71,7 @@ square.forEach(function(square) {
 
 let ticker = PIXI.Ticker.shared;
 let text;
+let stop;
 const WIDTH = 1000;
 const HEIGHT = 560;
  
@@ -79,7 +80,7 @@ const app = new PIXI.Application({
     height: HEIGHT,
     backgroundColor: 0x000000 
 });
-document.body.appendChild(app.view);
+document.getElementById("screen").appendChild(app.view);
 
 /// background mountain image sprite
 var mountains = PIXI.Sprite.from('images/layers/parallax-mountain-bg.png');
@@ -105,9 +106,22 @@ app.stage.addChild(text)
 const startGame = () => {
   app.stage.removeChild(text);
   speed = 6;
+  refreshIntervalId = setInterval(setTime, 1000);
+
 }
 
 app.view.addEventListener('click', startGame);
+
+text2 = new PIXI.Text("GAME OVER");
+text2.x = app.view.width/2;
+text2.y = app.view.height/2;
+text2.anchor.set(0.5);
+text2.style = new PIXI.TextStyle({
+  fill: 0x000000,
+  fontSize: 100,
+  fontFamily: "Arcade"
+})
+
 
 
 /*
@@ -197,6 +211,10 @@ app.ticker.add((delta) => {
 
     if (colision(player1,sprite)){
       speed=0;
+      app.view.removeEventListener('click', startGame);
+      app.stage.addChild(text2)
+      stop = 0;
+      clearInterval(refreshIntervalId);
     }
 });
 
@@ -256,6 +274,8 @@ document.addEventListener('keydown', jump);
 app.view.addEventListener('touchend', jump);
 
 
+// COLISION DETECTION
+
 function colision (a,b){
   let aBox = a.getBounds();
   let bBox = b.getBounds()
@@ -269,5 +289,26 @@ function colision (a,b){
 
 
 
-// paralax scrolling bakcgorund
+// count up timer
+
+
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+let refreshIntervalId;
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));   
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  } 
+}
 
