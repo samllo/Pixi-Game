@@ -1,4 +1,6 @@
 
+setTimeout(function() // timeout allows fonts time to load
+{
 
 let ticker = PIXI.Ticker.shared;
 let text;
@@ -84,8 +86,8 @@ const modAbs = (value, modulo) => (value % modulo + modulo) % modulo;
 
 
 app.ticker.add(function(delta) {
-  speed = speed * 1.001;
-  power = power * 0.9997;
+  speed = speed * 1.0005;
+  power = power * 0.9998;
 });
 
 // Listen for animate update
@@ -205,3 +207,5 @@ function pad(val) {
   } 
 }
 
+init();
+}, 10); // end of timeout function (give times for fonts to load)
