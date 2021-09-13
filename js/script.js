@@ -207,5 +207,5 @@ function pad(val) {
   } 
 }
 
-init();
+
 }, 10); // end of timeout function (give times for fonts to load)
